@@ -74,7 +74,7 @@ flags.DEFINE_string(
 
 FLAGS = flags.FLAGS
 
-_NUM_CLASSES = 3
+_NUM_CLASSES = 2
 
 
 def _get_examples_batch():
@@ -92,17 +92,17 @@ def _get_examples_batch():
     provides the labels for corresponding rows in features.
   """
   # Make a waveform for each class.
-  num_seconds = 5
-  sr = 44100  # Sampling rate.
-  t = np.linspace(0, num_seconds, int(num_seconds * sr))  # Time axis.
+  #num_seconds = 5
+  #sr = 44100  # Sampling rate.
+  #t = np.linspace(0, num_seconds, int(num_seconds * sr))  # Time axis.
   # Random sine wave.
-  freq = np.random.uniform(100, 1000)
-  sine = np.sin(2 * np.pi * freq * t)
+  #freq = np.random.uniform(100, 1000)
+  #sine = np.sin(2 * np.pi * freq * t)
   # Random constant signal.
-  magnitude = np.random.uniform(-1, 1)
-  const = magnitude * t
+  #magnitude = np.random.uniform(-1, 1)
+  #const = magnitude * t
   # White noise.
-  noise = np.random.normal(-1, 1, size=t.shape)
+  #noise = np.random.normal(-1, 1, size=t.shape)
 
   # Make examples of each signal and corresponding labels.
   # Sine is class index 0, Const class index 1, Noise class index 2.
@@ -112,6 +112,7 @@ def _get_examples_batch():
   const_labels = np.array([[0, 1, 0]] * const_examples.shape[0])
   noise_examples = vggish_input.waveform_to_examples(noise, sr)
   noise_labels = np.array([[0, 0, 1]] * noise_examples.shape[0])
+  for wav in wav_file
 
   # Shuffle (example, label) pairs across all classes.
   all_examples = np.concatenate((sine_examples, const_examples, noise_examples))
